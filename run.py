@@ -19,10 +19,10 @@ logging.getLogger().setLevel(logging.CRITICAL)
 
 # LangSmith settings section, set TRACING_V2 to "true" to enable it
 # or leave it as it is, if you don't need tracing (more info in README)
-os.environ["LANGCHAIN_TRACING_V2"] = "false"
+os.environ["LANGCHAIN_TRACING_V2"] = "true"
 os.environ["LANGCHAIN_ENDPOINT"] = "https://api.smith.langchain.com"
 os.environ["LANGCHAIN_API_KEY"] = os.getenv("LANGCHAIN_SMITH_API_KEY", "")
-os.environ["LANGCHAIN_PROJECT"] = ""  # insert you project name here
+os.environ["LANGCHAIN_PROJECT"] = "salesGPT"  # insert you project name here
 
 if __name__ == "__main__":
     # Initialize argparse
@@ -30,7 +30,7 @@ if __name__ == "__main__":
 
     # Add arguments
     parser.add_argument(
-        "--config", type=str, help="Path to agent config file", default=""
+        "--config", type=str, help="Path to agent config file", default="uber/uber_agent_setup.json"
     )
     parser.add_argument(
         "--verbose", action="store_true", help="Verbosity", default=False
@@ -50,7 +50,7 @@ if __name__ == "__main__":
     verbose = args.verbose
     max_num_turns = args.max_num_turns
 
-    llm = ChatLiteLLM(temperature=0.2, model_name="gpt-3.5-turbo")
+    llm = ChatLiteLLM(temperature=0.2, model_name="gpt-4o")
 
     if config_path == "":
         print("No agent config specified, using a standard config")
@@ -64,8 +64,8 @@ if __name__ == "__main__":
         if USE_TOOLS:
             sales_agent_kwargs.update(
                 {
-                    "product_catalog": "examples/sample_product_catalog.txt",
-                    "salesperson_name": "Ted Lasso",
+                    "product_catalog": "uber/uber_product_catalog.txt",
+                    "salesperson_name": "ethan",
                 }
             )
 
