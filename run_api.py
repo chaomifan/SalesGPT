@@ -65,12 +65,12 @@ async def get_bot_name(authorization: Optional[str] = Header(None)):
         get_auth_key(authorization)
         
     sales_api = SalesGPTAPI(
-        config_path=os.getenv("CONFIG_PATH", "examples/example_agent_setup.json"),
+        config_path=os.getenv("CONFIG_PATH", "uber/uber_agent_setup.json"),
         product_catalog=os.getenv(
-            "PRODUCT_CATALOG", "examples/sample_product_catalog.txt"
+            "PRODUCT_CATALOG", "uber/uber_product_catalog.txt"
         ),
         verbose=True,
-        model_name=os.getenv("GPT_MODEL", "gpt-3.5-turbo-0613"),
+        model_name=os.getenv("GPT_MODEL", "gpt-4o"),
     )
     name = sales_api.sales_agent.salesperson_name
     return {"name": name, "model": sales_api.sales_agent.model_name}
@@ -105,12 +105,12 @@ async def chat_with_sales_agent(req: MessageList, stream: bool = Query(False), a
     else:
         print("Creating new session")
         sales_api = SalesGPTAPI(
-            config_path=os.getenv("CONFIG_PATH", "examples/example_agent_setup.json"),
+            config_path=os.getenv("CONFIG_PATH", "uber/uber_agent_setup.json"),
             verbose=True,
             product_catalog=os.getenv(
-                "PRODUCT_CATALOG", "examples/sample_product_catalog.txt"
+                "PRODUCT_CATALOG", "uber/uber_product_catalog.txt"
             ),
-            model_name=os.getenv("GPT_MODEL", "gpt-3.5-turbo-0613"),
+            model_name=os.getenv("GPT_MODEL", "gpt-4o"),
             use_tools=os.getenv("USE_TOOLS_IN_API", "True").lower()
             in ["true", "1", "t"],
         )
