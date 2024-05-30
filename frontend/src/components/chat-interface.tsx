@@ -221,7 +221,7 @@ export function ChatInterface() {
     <div key="1" className="flex flex-col " style={{ height: '89vh' }}>
       <header className="flex items-center justify-center h-16 bg-gray-900 text-white">
         <BotIcon className="animate-wave h-7 w-6 mr-2" />
-        <h1 className="text-2xl font-bold">SalesGPT</h1>
+        <h1 className="text-2xl font-bold">字节造物策略AI测试</h1>
       </header>
       <main className="flex flex-row justify-center items-start bg-gray-100 dark:bg-gray-900 p-4" >
         <div className="flex flex-col w-1/2 h-full bg-white rounded-lg shadow-md p-4 mr-4 chat-messages" style={{maxHeight}}>
