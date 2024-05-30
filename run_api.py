@@ -16,7 +16,8 @@ load_dotenv()
 
 # Access environment variables
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
-CORS_ORIGINS = ["http://localhost:3000", 
+CORS_ORIGINS = ["http://38.165.32.84:3000", 
+                "http://localhost:3000", 
                 "http://react-frontend:80",
                 "https://sales-gpt-frontend-git-main-filip-odysseypartns-projects.vercel.app",
                 "https://sales-gpt-frontend.vercel.app"]
